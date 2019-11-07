@@ -17,8 +17,8 @@ end ]]
 --DIFFERENT
 
 -- Path for the file to read
-local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
- 
+--[[local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
+
 -- Open the file handle
 local file, errorString = io.open( path, "r" )
  
@@ -34,12 +34,12 @@ else
     io.close( file )
 end
  
-file = nil
+file = nil]]
 
 --DIFFERENT
 
 
---[[local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
+local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
 local fhd = io.open( path )
   
 -- Determine if file exists
@@ -51,4 +51,4 @@ else
 end
 
 local path = system.pathForFile( nil, system.DocumentsDirectory )
-print( path )]]
+print( path )
