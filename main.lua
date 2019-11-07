@@ -14,7 +14,7 @@ for i = 1, 10 do
     print ( dialogues [i] )
 end ]]
 
---DIFFERENT
+--Read Contents
 
 -- Path for the file to read
 --[[local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
@@ -36,7 +36,7 @@ end
  
 file = nil]]
 
---DIFFERENT
+--Recognize File
 
 
 local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
