@@ -8,47 +8,33 @@
 
 --DIFFERENT
 
---[[local dialogues = { "String1", "String2" } --Initilize table of array
-for i = 1, 10 do
-    dialogues[i] = " "
-    print ( dialogues [i] )
-end ]]
-
---DIFFERENT
-
--- Path for the file to read
-local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
+local json = require( "json" )
  
--- Open the file handle
-local file, errorString = io.open( path, "r" )
+local dataTable = {}
  
-if not file then
-    -- Error occurred; output the cause
-    print( "File error: " .. errorString )
-else
-    -- Read data from file
-    local contents = file:read( "*a" )
-    -- Output the file contents
-    print( "Contents of " .. path .. "\n" .. contents )
-    -- Close the file handle
-    io.close( file )
-end
+local filePath = system.pathForFile( "dialog.json", system.DocumentsDirectory ) 	--Specify path of interaction
+
+local contents
+
+local function loadData()
  
-file = nil
-
---DIFFERENT
-
-
---[[local path = system.pathForFile("hello.txt", system.DocumentsDirectory )
-local fhd = io.open( path )
-  
--- Determine if file exists
-if fhd then
-   print( "File exists" )
-   fhd:close()
-else
-    print( "File does not exist!" )
+    local file = io.open( filePath, "r" )
+ 
+    if file then
+        print(" File Exists! ")
+        contents = file:read( "*a" )
+        io.close( file )
+        dataTable = json.decode( contents )
+    else
+        print(" File Does Not Exist! ")
+    end
 end
 
-local path = system.pathForFile( nil, system.DocumentsDirectory )
-print( path )]]
+loadData() 		-- Function Call
+
+local jsonData = json.encode(dataTable)
+print(jsonData)
+
+
+local Dialogue = json.decode(jsonData)
+print(Dialogue.Kamali[3])
